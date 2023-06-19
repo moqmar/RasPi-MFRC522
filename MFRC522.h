@@ -98,7 +98,7 @@ enum {
   MI_ERR = 2,
 };
 
-int MFRC522_Init(unsigned int ce);
+int MFRC522_Init(char* spidev);
 int MFRC522_Request(unsigned char reqMode, unsigned char *backBitsp);
 int MFRC522_Anticoll(unsigned char **backDatap);
 int MFRC522_SelectTag(unsigned char *uid);

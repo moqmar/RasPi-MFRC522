@@ -274,12 +274,14 @@ static void CalulateCRC(unsigned char *pIndata, size_t buflen,
 /*
  * EXPORTED
  */
-int MFRC522_Init(unsigned int ce) {
+int MFRC522_Init(char* spidev) {
   char device[128];
 
   GPIO_setup(NRSTPD, 1);
 
-  snprintf(device, sizeof(device), "/dev/spidev0.%u", ce);
+  if (spidev == nullptr)
+    spidev = "/dev/spidev0.0";
+  snprintf(device, sizeof(device), "%s", spidev);
 
   MFRC_fd = openSPI(device, speed);
 

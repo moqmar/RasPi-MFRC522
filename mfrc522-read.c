@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   } else
     blockno = 8;
 
-  MFRC522_Init(0);
+	MFRC522_Init(getenv("MFRC522_SPIDEV"));
 
   while ((status = MFRC522_Request(PICC_REQIDL, &backBits)) != MI_OK)
     usleep(500);
