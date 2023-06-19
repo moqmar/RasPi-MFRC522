@@ -1,8 +1,9 @@
 CFLAGS += -g
-Read:	Read.o MFRC522.o spi.o gpio.o
-	$(CC) $(CFLAGS) -o $@ Read.o MFRC522.o spi.o gpio.o
 
-Read.o:	Read.c
+mfrc522-read:	mfrc522-read.o MFRC522.o spi.o gpio.o
+	$(CC) $(CFLAGS) -o $@ mfrc522-read.o MFRC522.o spi.o gpio.o
+
+mfrc522-read.o:	mfrc522-read.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 MFRC522.o:	MFRC522.c
